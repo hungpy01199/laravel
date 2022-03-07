@@ -8,10 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\PasswordReset;
+use App\Models\Profile;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+
 
     /**
      * The attributes that are mass assignable.
@@ -19,8 +22,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username_login',
         'email',
+        'profiles_id',
         'password'
     ];
 
@@ -48,8 +52,22 @@ class User extends Authenticatable implements MustVerifyEmail
      * @param  string  $token
      * @return void
      */
+    public static function makeInstance()
+    {
+        return new self();
+    }
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new PasswordReset($token));
     }
+
+    // public function getProfiles()
+    // {
+    //     return $this->belongsTo(Profile::class, 'profiles_id');
+    // }
+    // public function getAll()
+    // {
+    //    return $this->with('getProfiles')
+    //    ->get();
+    //}
 }

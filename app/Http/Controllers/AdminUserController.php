@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class AdminUserController extends Controller
 {
-    //
-    function list()
+
+    public function show()
     {
-        $users = Profile::paginate(1);
+        $users = Profile::with('getProfiles')
+        ->get();
+        $data=[
+            'data'=>$users,
+        ];
+       
         // return $user;
-        return view('admin.user.list', compact('users'));
+        return view('admin.list', compact('data'));
     }
 
     function delete($id)
@@ -22,16 +28,16 @@ class AdminUserController extends Controller
             $users = Profile::find($id);
             $users->delete();
 
-            return redirect('admin/user/list')->with('status', 'Đã xóa thành công');
+            return redirect('admin/list')->with('status', 'Đã xóa thành công');
         } else {
-            return redirect('admin/user/list')->with('status', 'Không thể xóa chính mình');
+            return redirect('admin/list')->with('status', 'Không thể xóa chính mình');
         }
     }
 
     public function edit($id)
     {
-        $user = Profile::find($id);
-        return view('admin.user.edit', compact('user'));
+        $users = Profile::find($id);
+        return view('admin.edit', compact('users'));
     }
 
     public function update(Request $request, $id)
@@ -69,6 +75,8 @@ class AdminUserController extends Controller
             'description' =>$request->input('description'),
             'phone' =>$request->input('phone')
         ]);
-        return redirect('admin/user/list')->with('status', 'Sửa thành công');
+        return redirect('admin/dashboard')->with('status', 'Sửa thành công');
     }
+    
+    
 }

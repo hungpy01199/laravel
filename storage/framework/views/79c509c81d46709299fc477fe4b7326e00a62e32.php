@@ -6,21 +6,21 @@
                 <div class="card-header"><?php echo e(__('Login')); ?></div>
 
                 <div class="card-body">
-                    <form method="POST" action="<?php echo e(route('login')); ?>">
+                    <form method="POST" action="<?php echo e(route('handleLogin')); ?>">
                         <?php echo csrf_field(); ?>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end"><?php echo e(__('Email Address')); ?></label>
+                            <label for="username_login" class="col-md-4 col-form-label text-md-end"><?php echo e(__('Username_login')); ?></label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control <?php $__errorArgs = ['email'];
+                                <input id="username_login" type="text" class="form-control <?php $__errorArgs = ['username_login'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="email" value="<?php echo e(old('email')); ?>" required autocomplete="email" autofocus>
+unset($__errorArgs, $__bag); ?>" name="username_login" value="<?php echo e(old('username_login')); ?>" required autocomplete="username_login" autofocus>
 
                                 <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

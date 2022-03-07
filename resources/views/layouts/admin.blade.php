@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,13 +22,14 @@
                         <i class="plus-icon fas fa-plus-circle"></i>
                     </button>
                     <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{url('/post/add')}}">Thêm bài viết</a>
                         
 
                     </div>
                 </div>
                 <div class="btn-group">
                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{Auth::user()->name}}
+                        {{Auth::user()->username_login}}
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#">Tài khoản</a>
@@ -47,6 +49,7 @@
         <div id="page-body" class="d-flex">
             <div id="sidebar" class="bg-white">
                 <ul id="sidebar-menu">
+                
                     <li class="nav-link">
                         <a href="{{url('admin')}}">
                             <div class="nav-link-icon d-inline-flex">
@@ -56,37 +59,27 @@
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
                     </li>
+                    
+                    @foreach($menu as $value)
                     <li class="nav-link">
                         <a href="{{url('admin/admin')}}">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
-                            Admin
+                            {{$value->name}}
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
 
                         <ul class="sub-menu">
-                            <li><a href="{{url('admin/admin/add')}}">Thêm mới</a></li>
-                            <li><a href="{{url('admin//admin/list')}}">Danh sách</a></li>
+                            <li><a href="{{url('admin/add')}}">Thêm mới</a></li>
+                            <li><a href="{{url('admin/list')}}">Danh sách</a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-link">
-                        <a href="{{url('admin/user')}}">
-                            <div class="nav-link-icon d-inline-flex">
-                                <i class="far fa-folder"></i>
-                            </div>
-                            Users
-                        </a>
-                        <i class="arrow fas fa-angle-right"></i>
-
-                        <ul class="sub-menu">
-                            <li><a href="{{url('admin/user/add')}}">Thêm mới</a></li>
-                            <li><a href="{{url('admin/user/list')}}">Danh sách</a></li>
-                        </ul>
-                    </li>
+                    @endforeach
 
                     
+
+
 
                 </ul>
             </div>

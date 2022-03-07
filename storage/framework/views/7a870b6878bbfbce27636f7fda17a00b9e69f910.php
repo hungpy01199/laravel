@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,13 +22,14 @@
                         <i class="plus-icon fas fa-plus-circle"></i>
                     </button>
                     <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<?php echo e(url('/post/add')); ?>">Thêm bài viết</a>
                         
 
                     </div>
                 </div>
                 <div class="btn-group">
                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo e(Auth::user()->name); ?>
+                        <?php echo e(Auth::user()->username_login); ?>
 
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
@@ -49,6 +51,7 @@
         <div id="page-body" class="d-flex">
             <div id="sidebar" class="bg-white">
                 <ul id="sidebar-menu">
+                
                     <li class="nav-link">
                         <a href="<?php echo e(url('admin')); ?>">
                             <div class="nav-link-icon d-inline-flex">
@@ -58,37 +61,28 @@
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
                     </li>
+                    
+                    <?php $__currentLoopData = $menu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <li class="nav-link">
                         <a href="<?php echo e(url('admin/admin')); ?>">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
-                            Admin
+                            <?php echo e($value->name); ?>
+
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
 
                         <ul class="sub-menu">
-                            <li><a href="<?php echo e(url('admin/admin/add')); ?>">Thêm mới</a></li>
-                            <li><a href="<?php echo e(url('admin//admin/list')); ?>">Danh sách</a></li>
+                            <li><a href="<?php echo e(url('admin/add')); ?>">Thêm mới</a></li>
+                            <li><a href="<?php echo e(url('admin/list')); ?>">Danh sách</a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-link">
-                        <a href="<?php echo e(url('admin/user')); ?>">
-                            <div class="nav-link-icon d-inline-flex">
-                                <i class="far fa-folder"></i>
-                            </div>
-                            Users
-                        </a>
-                        <i class="arrow fas fa-angle-right"></i>
-
-                        <ul class="sub-menu">
-                            <li><a href="<?php echo e(url('admin/user/add')); ?>">Thêm mới</a></li>
-                            <li><a href="<?php echo e(url('admin/user/list')); ?>">Danh sách</a></li>
-                        </ul>
-                    </li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     
+
+
 
                 </ul>
             </div>

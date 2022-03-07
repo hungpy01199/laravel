@@ -10,19 +10,19 @@
                         <?php echo csrf_field(); ?>
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end"><?php echo e(__('Name')); ?></label>
+                            <label for="username_login" class="col-md-4 col-form-label text-md-end"><?php echo e(__('Username_login')); ?></label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control <?php $__errorArgs = ['name'];
+                                <input id="username_login" type="text" class="form-control <?php $__errorArgs = ['username_login'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="name" value="<?php echo e(old('name')); ?>" required autocomplete="name" autofocus>
+unset($__errorArgs, $__bag); ?>" name="username_login" value="<?php echo e(old('username_login')); ?>" required autocomplete="username_login" autofocus>
 
-                                <?php $__errorArgs = ['name'];
+                                <?php $__errorArgs = ['username_login'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

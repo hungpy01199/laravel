@@ -30,13 +30,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Tên</th>
-                        <th scope="col">Giới thiệu</th>
-                        <th scope="col">Nickname</th>
-                        <th scope="col">Tên đăng nhập</th>
                         <th scope="col">Avatar</th>
-                        <th scope="col">Ngày sinh</th>
-                        <th scope="col">Địa chỉ</th>
-                        <th scope="col">Thời gian</th>
                         <th scope="col">Tác vụ</th>
                     </tr>
                 </thead>
@@ -47,17 +41,8 @@
                         <th scope="row"><?php echo e($user->id); ?></th>
                         <td>
                         <?php echo e($user->name); ?> <br>
-                        <?php echo e($user->phone); ?>
-
                         </td>
-                        <td><?php echo e($user->description); ?></td>
-                        <td><?php echo e($user->nickname); ?></td>
-                        <td><?php echo e($user->username_login); ?></td>
                         <td><?php echo e($user->avatar); ?></td>
-                        
-                        <td><?php echo e($user->dob); ?></td>
-                        <td><?php echo e($user->address); ?></td>
-                        <td><?php echo e($user->created_at); ?></td>
                         <td>
                             <a href="<?php echo e(route('user.edit', $user->id)); ?>" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
                             <?php if(Auth::id() != $user->id): ?>
